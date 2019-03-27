@@ -2,6 +2,7 @@ const rehydrated = JSON.parse(localStorage.getItem('persist')) || {}
 
 const state = {
   adapters: [],
+  messages: [],
   app: {
     expandAdapters: false,
   },
@@ -46,6 +47,11 @@ window.store = {
       case 'TOGGLE_ADAPTERS':
         state.app.expandAdapters = !state.app.expandAdapters
         break
+      case 'ADD_MESSAGE':
+        state.messages.push({
+          id: `${Date.now()}-${Math.random()}`,
+          content: payload,
+        })
       default:
         break
     }
