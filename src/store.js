@@ -8,7 +8,7 @@ const state = {
   },
   ...rehydrated,
   loaded: false,
-};
+}
 
 let render
 
