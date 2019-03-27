@@ -38,7 +38,7 @@ const Adapter = (adapter) => {
       ${adapter.name}
       <input
         type="checkbox"
-        ?checked=${adapter.enabled ? 'checked' : ''}
+        ?checked=${adapter.enabled && adapter.instance.name ? 'checked' : ''}
         @change=${(e) => handleAdapterChange(adapter.name, e.target.checked)}
       />
       ${adapter.instance.auth().map(auth => {
