@@ -27,6 +27,9 @@ const handleAdapterAuthChange = (adapter, name, value) => {
 }
 
 const Adapter = (adapter) => {
+  if (!adapter.instance.name) {
+    return html ``
+  }
   return html `
     <style>
       .adapter {
@@ -38,7 +41,7 @@ const Adapter = (adapter) => {
       ${adapter.name}
       <input
         type="checkbox"
-        ?checked=${adapter.enabled && adapter.instance.name ? 'checked' : ''}
+        ?checked=${adapter.enabled ? 'checked' : ''}
         @change=${(e) => handleAdapterChange(adapter.name, e.target.checked)}
       />
       ${adapter.instance.auth().map(auth => {
